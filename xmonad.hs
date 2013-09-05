@@ -349,15 +349,17 @@ main = do
   , manageHook = manageHook defaultConfig
       <+> composeAll myManagementHooks
       <+> manageDocks
-  , logHook = takeTopFocus {- dynamicLogWithPP $ xmobarPP {
-      ppOutput = hPutStrLn xmproc
-      , ppTitle = xmobarColor myTitleColor "" . shorten myTitleLength
-      , ppCurrent = xmobarColor myCurrentWSColor ""
-        . wrap myCurrentWSLeft myCurrentWSRight
-      , ppVisible = xmobarColor myVisibleWSColor ""
-        . wrap myVisibleWSLeft myVisibleWSRight
-      , ppUrgent = xmobarColor myUrgentWSColor ""
-        . wrap myUrgentWSLeft myUrgentWSRight
-    }-}
+  , logHook = do
+        takeTopFocus
+        dynamicLogWithPP $ xmobarPP {
+            ppOutput = hPutStrLn xmproc
+            , ppTitle = xmobarColor myTitleColor "" . shorten myTitleLength
+            , ppCurrent = xmobarColor myCurrentWSColor ""
+                . wrap myCurrentWSLeft myCurrentWSRight
+            , ppVisible = xmobarColor myVisibleWSColor ""
+                . wrap myVisibleWSLeft myVisibleWSRight
+            , ppUrgent = xmobarColor myUrgentWSColor ""
+                . wrap myUrgentWSLeft myUrgentWSRight
+        }
   }
     `additionalKeys` myKeys
