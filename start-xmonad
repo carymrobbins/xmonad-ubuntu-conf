@@ -17,6 +17,18 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Load X resources (fixes some font issues)
 xrdb -merge .Xresources
 
+# VirtualBox guest
+if [ -f /usr/bin/VBoxClient-all ]
+then
+    VBoxClient-all &
+fi
+
+# VMware guest
+if [ -f /usr/bin/vmware-user ]
+then
+    vmware-user &
+fi
+
 # Start compositing to support transparency. You can omit this
 # if you prefer not to use any transparency, but it is likely to cause
 # ugly black fringing with some programs such as synapse that expect
