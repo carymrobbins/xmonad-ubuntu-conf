@@ -27,6 +27,7 @@ import XMonad.Layout.Fullscreen
 import XMonad.Util.EZConfig
 import XMonad.Util.Run
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ICCCMFocus
 import XMonad.Actions.Plane
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
@@ -348,7 +349,7 @@ main = do
   , manageHook = manageHook defaultConfig
       <+> composeAll myManagementHooks
       <+> manageDocks
-  , logHook = dynamicLogWithPP $ xmobarPP {
+  , logHook = takeTopFocus {- dynamicLogWithPP $ xmobarPP {
       ppOutput = hPutStrLn xmproc
       , ppTitle = xmobarColor myTitleColor "" . shorten myTitleLength
       , ppCurrent = xmobarColor myCurrentWSColor ""
@@ -357,6 +358,6 @@ main = do
         . wrap myVisibleWSLeft myVisibleWSRight
       , ppUrgent = xmobarColor myUrgentWSColor ""
         . wrap myUrgentWSLeft myUrgentWSRight
-    }
+    }-}
   }
     `additionalKeys` myKeys
