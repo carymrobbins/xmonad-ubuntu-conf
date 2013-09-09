@@ -1,0 +1,5 @@
+# Symlink this to ~/.config/hotkeys/synapse.hotkeys
+
+[hotkey:activate]
+Owner=synapse
+Signature=
