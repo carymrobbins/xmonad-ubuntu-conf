@@ -29,6 +29,7 @@ import XMonad.Util.Run
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ICCCMFocus
 import XMonad.Actions.Plane
+import XMonad.Actions.GridSelect
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 import qualified XMonad.StackSet as W
@@ -90,7 +91,7 @@ myWorkspaces =
     "7:Chat",  "8:Dbg", "9:Pix",
     "4:Docs",  "5:Dev", "6:Web",
     "1:Term",  "2:Hub", "3:Mail",
-    "0:VM",    "Extr1", "Extr2"
+    "0:VM"
   ]
 
 startupWorkspace = "5:Dev"  -- which workspace do you want to be on after launch?
@@ -208,6 +209,8 @@ myKeyBindings =
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
     , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
+    , ((myModMask, xK_g), goToSelected defaultGSConfig)
+    , ((myModMask .|. shiftMask, xK_KP_Enter), spawn myTerminal)
   ]
 
 
@@ -289,7 +292,7 @@ numPadKeys =
     xK_KP_Home, xK_KP_Up, xK_KP_Page_Up
     , xK_KP_Left, xK_KP_Begin,xK_KP_Right
     , xK_KP_End, xK_KP_Down, xK_KP_Page_Down
-    , xK_KP_Insert, xK_KP_Delete, xK_KP_Enter
+    , xK_KP_Insert
   ]
 
 numKeys =
@@ -297,7 +300,7 @@ numKeys =
     xK_7, xK_8, xK_9
     , xK_4, xK_5, xK_6
     , xK_1, xK_2, xK_3
-    , xK_0, xK_minus, xK_equal
+    , xK_0
   ]
 
 -- Here, some magic occurs that I once grokked but has since
