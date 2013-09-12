@@ -199,6 +199,15 @@ myLayouts =
   the output.
 -}
 
+overridedKeyBindings =
+  [
+    ((myModMask, xK_Left), sendMessage Shrink)
+    , ((myModMask, xK_Right), sendMessage Expand)
+  ]
+
+overrideKeys config ks =
+  config `removeKeys` (map fst ks) `additionalKeys` ks
+
 myKeyBindings =
   [
     ((myModMask, xK_b), sendMessage ToggleStruts)
@@ -366,3 +375,4 @@ main = do
         }
   }
     `additionalKeys` myKeys
+    `overrideKeys` overridedKeyBindings
