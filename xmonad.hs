@@ -203,6 +203,8 @@ overridedKeyBindings =
   [
     ((myModMask, xK_Left), sendMessage Shrink)
     , ((myModMask, xK_Right), sendMessage Expand)
+    , ((myModMask, xK_Up), sendMessage Shrink)
+    , ((myModMask, xK_Down), sendMessage Expand)
   ]
 
 overrideKeys config ks =
