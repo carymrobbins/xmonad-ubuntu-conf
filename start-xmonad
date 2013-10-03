@@ -112,3 +112,5 @@ gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 # Now, finally, start xmonad
 exec xmonad
 
+# Update background image
+feh --bg-fill "~/.xmonad/Andromeda Galaxy.jpg"
