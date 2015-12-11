@@ -18,9 +18,7 @@ Config {
   fgColor = "grey",
 
   -- Position is top left, taking up 95% of screen.
-  -- You are likely to have to tweak the width here based on the width
-  -- of your screen to make it play nicely with stalonetray, which we
-  -- want to be taking up the remainer of the space on the right side
+  -- You are likely to have to tweak the width here based on the width -- of your screen to make it play nicely with stalonetray, which we -- want to be taking up the remainer of the space on the right side
   -- of your screen.
   position = TopW L 95, 
 
@@ -57,7 +55,10 @@ Config {
     -- To get volume information, we run a custom bash script.
     -- This is because the built-in volume support in xmobar is disabled
     -- in Debian and derivatives like Ubuntu. 
-    Run Com "/bin/bash" ["-c", "~/.xmonad/get-volume"] "myvolume" 10,
+    -- Run Com "/bin/bash" ["-c", "'amixer -D pulse sget Master | grep -o \"[0-9]\% | head -n 1'"] "myvolume" 1,
+    -- Run Com "/bin/bash" ["-c", "~/.xmonad/get-volume"] "myvolume" 1,
+    -- Run Com "/bin/bash" ["-c", "~/.xmonad/get-brightness"] "mybrightness" 1,
+    -- Run Com "/bin/bash" ["-c", "~/.xmonad/get-leds"] "myleds" 1,
 
     -- This line tells xmobar to read input from stdin. That's how we
     -- get the information that xmonad is sending it for display.
@@ -73,5 +74,6 @@ Config {
 
    -- Overall template for the layout of the xmobar contents. Note that
    -- space is significant and can be used to add padding.
-   template = "%StdinReader% }{ %battery% | %cpu% | %memory% | Vol: %myvolume%    <fc=#e6744c>%date%</fc>     "
+   -- template = "%StdinReader% }{ %battery% | %cpu% | %memory% | Vol: %myvolume%    <fc=#e6744c>%date%</fc>     "
+   template = "%StdinReader% }{ %battery% | %cpu% | %memory%    <fc=#e6744c>%date%</fc>     "
 }

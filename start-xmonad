@@ -36,8 +36,8 @@ xcompmgr -n &
 # Note that you can run xrandr at the command line to get a list of your
 # connected screens and find out what names you should use to refer to them.
 
-# Activate primary screen 
-xrandr --output LVDS-1 --auto --primary
+# Built in display
+xrandr --output eDP1 --mode 1680x1050 --primary
 
 # If we find that a screen is connected via VGA, activate it and position it
 # to the left of the primary screen.
@@ -101,6 +101,10 @@ gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh
 # xmonad related, but it's handy if you're a vim user.
 setxkbmap -option 'ctrl:nocaps'
 
+# If it exists, execute our .xinitrc
+if [ -f $HOME/.xinitrc ]; then
+  source .xinitrc
+fi
+
 # Now, finally, start xmonad
 exec xmonad
-
