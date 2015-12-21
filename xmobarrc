@@ -26,7 +26,7 @@ Config {
   -- presentation in the bar.
   commands = [
     -- Gather and format CPU usage information.
-    -- If it's above 50%, we consider it high usage and make it red. 
+    -- If it's above 50%, we consider it high usage and make it red.
     Run Cpu [
       "-H","50",
       "--high","red"
